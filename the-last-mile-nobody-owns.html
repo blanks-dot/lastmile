@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Last Mile Nobody Owns · Mary Blankemeier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f1e7;
+    --paper-2:#efe8da;
+    --ink:#211d18;
+    --ink-soft:#4a443b;
+    --teal:#1f5c5a;
+    --teal-deep:#143f3d;
+    --rust:#a8492c;
+    --rule:#d8cfbc;
+    --measure:40rem;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(ellipse at 12% -10%, rgba(31,92,90,.07), transparent 55%),
+      radial-gradient(ellipse at 100% 0%, rgba(168,73,44,.06), transparent 45%);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:20px;
+    line-height:1.62;
+    padding:0 1.4rem 6rem;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;max-width:var(--measure);margin:0 auto;}
+
+  /* ---- masthead ---- */
+  header{padding-top:4.2rem;}
+  .kicker{
+    font-family:"Newsreader",serif;font-style:italic;font-weight:500;
+    letter-spacing:.02em;color:var(--rust);font-size:.95rem;margin:0 0 1.1rem;
+    display:flex;align-items:center;gap:.7rem;
+  }
+  .kicker::before{content:"";width:1.9rem;height:1px;background:var(--rust);display:inline-block;}
+  h1{
+    font-family:"Fraunces",serif;font-weight:600;font-optical-sizing:auto;
+    font-size:clamp(2.6rem,7vw,4.2rem);line-height:.99;letter-spacing:-.015em;
+    margin:0 0 1.1rem;color:var(--ink);
+  }
+  .dek{
+    font-family:"Newsreader",serif;font-style:italic;font-weight:400;
+    font-size:clamp(1.15rem,2.6vw,1.5rem);line-height:1.4;color:var(--ink-soft);
+    margin:0 0 1.9rem;max-width:34rem;
+  }
+  .byline{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;
+    font-size:.92rem;color:var(--ink-soft);letter-spacing:.01em;
+    padding-bottom:1.6rem;border-bottom:2px solid var(--ink);
+  }
+  .byline b{font-weight:600;color:var(--ink);font-size:1rem;}
+  .byline .dot{color:var(--rule);}
+  .collab{
+    margin:1.5rem 0 0;font-style:italic;color:var(--ink-soft);
+    font-size:1.02rem;line-height:1.45;max-width:36rem;
+    padding-left:1rem;border-left:2px solid var(--rule);
+  }
+
+  /* ---- body ---- */
+  article{padding-top:2.2rem;}
+  article p{margin:0 0 1.35rem;}
+  article p a{color:var(--teal);}
+  .lead::first-letter{
+    font-family:"Fraunces",serif;font-weight:600;
+    float:left;font-size:4.7rem;line-height:.78;padding:.32rem .55rem 0 0;color:var(--teal);
+  }
+  h2{
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;letter-spacing:-.01em;
+    margin:2.9rem 0 .2rem;color:var(--teal-deep);line-height:1.1;
+  }
+  h2 + .sub{font-style:italic;color:var(--ink-soft);font-size:1.02rem;margin:0 0 1.3rem;}
+
+  blockquote{
+    margin:2.2rem 0;padding:.2rem 0 .2rem 1.6rem;
+    border-left:3px solid var(--rust);
+    font-family:"Fraunces",serif;font-weight:500;font-style:italic;
+    font-size:1.5rem;line-height:1.28;color:var(--teal-deep);letter-spacing:-.01em;
+  }
+
+  /* ---- callout: what benefit leaders said ---- */
+  .callout{
+    margin:2.6rem 0;padding:1.7rem 1.8rem 1.5rem;
+    background:linear-gradient(180deg,var(--paper-2),#ece4d2);
+    border:1px solid var(--rule);border-radius:3px;
+    box-shadow:0 1px 0 #fff inset, 0 14px 30px -22px rgba(20,63,61,.5);
+    position:relative;
+  }
+  .callout .tag{
+    font-family:"Newsreader",serif;font-style:italic;color:var(--rust);
+    font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;margin:0 0 .9rem;
+  }
+  .callout p{font-size:1.04rem;line-height:1.55;margin:0 0 .7rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  /* ---- prototype card ---- */
+  .proto{
+    margin:2.4rem 0;border:1px solid var(--rule);border-radius:4px;overflow:hidden;
+    box-shadow:0 18px 40px -30px rgba(20,63,61,.55);
+  }
+  .proto-head{
+    background:var(--teal-deep);color:#f3ece0;padding:1.1rem 1.5rem;
+    display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  }
+  .proto-head .name{font-family:"Fraunces",serif;font-weight:600;font-size:1.2rem;letter-spacing:.01em;}
+  .proto-head .name span{color:#9fc7c2;font-style:italic;font-weight:400;font-size:.9rem;}
+  .proto-head .price{font-size:.82rem;color:#bcd6d2;text-align:right;line-height:1.3;}
+  .steps{list-style:none;margin:0;padding:.4rem 0;background:#fbf7ee;counter-reset:s;}
+  .steps li{
+    display:flex;gap:1rem;align-items:flex-start;padding:.85rem 1.5rem;
+    border-bottom:1px solid #ece3d2;font-size:1.02rem;line-height:1.4;
+  }
+  .steps li:last-child{border-bottom:0;}
+  .steps li::before{
+    counter-increment:s;content:counter(s);
+    flex:0 0 auto;width:1.7rem;height:1.7rem;border-radius:50%;
+    background:var(--teal);color:#fff;font-family:"Fraunces",serif;font-weight:600;
+    font-size:.95rem;display:grid;place-items:center;margin-top:.05rem;
+  }
+  .steps li b{color:var(--teal-deep);}
+  .proto-foot{
+    background:#fbf7ee;border-top:1px solid #ece3d2;padding:.7rem 1.5rem;
+    font-size:.85rem;font-style:italic;color:var(--ink-soft);text-align:center;
+  }
+  .proto-foot a{color:var(--teal);}
+
+  footer{
+    margin-top:3.4rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+    font-style:italic;color:var(--ink-soft);font-size:.95rem;
+  }
+  ::selection{background:var(--teal);color:var(--paper);}
+  @media (max-width:560px){
+    body{font-size:18px;}
+    .lead::first-letter{font-size:3.8rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">Field notes &middot; Healthcare &amp; engagement</p>
+    <h1>The Last Mile Nobody Owns</h1>
+    <p class="dek">Why the sickest, most expensive patients are the ones no system can reach, and what an honest fix would actually look like.</p>
+    <div class="byline">
+      <b>Mary Blankemeier</b>
+      <span class="dot">&bull;</span><span>Stanford GSB</span>
+      <span class="dot">&bull;</span><span>June 2026</span>
+      <span class="dot">&bull;</span><span>11 min read</span>
+    </div>
+    <p class="collab">This research was done alongside two classmates, Tatiana Bouri and Julien Bendelac. Tatiana focused on Medicaid and on engagement, the mechanics of how you actually reach the hardest-to-reach patient. Julien, drawing on his value-based care background, focused on the 2% of members who drive the majority of medical spend, including how to engage them. What follows is my own synthesis of the shared work.</p>
+  </header>
+
+  <article>
+    <p class="lead">Spend a quarter talking to the people who run healthcare benefits and a strange thing starts to happen. The numbers they quote begin to rhyme. About 2% of members drive a third of all medical spend. Or, the version the benefits leaders prefer: 20% of employees drive 80% of the cost. Whatever the framing, everyone is pointing at the same small group of very sick, very expensive people. And everyone, quietly, admits the same thing. They cannot reach them.</p>
+
+    <p>Julien and I started this work. Drawing on our value-based care background, we went after the 2% of members who drive roughly a third of all medical spend, and how employers think about them. From there, Tatiana and I branched into something more specific, running alongside that continued work: why Medicaid patients with type 2 diabetes don&rsquo;t complete the basic things that keep them alive and out of the hospital, like an A1c test twice a year or a prescription refilled on time. That thread went deep on engagement itself, the actual mechanics of reaching someone. These are not exotic interventions. Health plans earn tens of millions in bonuses tied to them. Apps, devices, coaches, and reminder systems all exist to drive them. And yet an independent evaluation of the eight largest digital-health companies found only tiny, clinically meaningless improvements for Medicaid members. The money is there. The tools are there. The movement is not.</p>
+
+    <p>The deeper we went, the more I realized we had scoped the problem too small. This is not a Medicaid problem. It is a hardest-to-reach-patient problem, and once you see it, it is everywhere. On the employer side the pressure is just as relentless. Healthcare trend is running near 9.5% a year with no real sign of slowing, and pharmacy alone now makes up roughly 30% of it, driven hard by GLP-1s that everyone is arguing about and almost no one is sure are saving money.</p>
+
+    <blockquote>The market is built backwards. The only people anyone invests in reaching are the ones where a single avoided hospitalization pays for the outreach.</blockquote>
+
+    <p>Here is the part that surprised me most. We tend to assume that commercial, employed, well-insured populations are the easy case. They are often the worst. One payer-side operator told me commercial engagement programs frequently top out around 3%, while Medicaid and Medicare programs built for high-cost members aim for 30 to 50%. That is a reverse economy of scale, and the logic is brutal: nobody funds high-touch outreach unless the downside is catastrophic enough to pay for it. A physician who spent a decade running home-based care for complex Medicaid patients described the same thing from the clinical side. Conversion rates that sit near 80% in commercial settings collapse to roughly 5% in Medicaid. Reaching an actual human being is expensive, and the system only opens its wallet once that person is already in crisis.</p>
+
+    <h2>The engagement numbers nobody says out loud</h2>
+    <p class="sub">When 4% counts as a win.</p>
+
+    <p>When I started asking benefits consultants what &ldquo;good engagement&rdquo; actually looks like, the numbers were so low they reframed the whole problem. A specialist at Aon described a new preventative-screening vendor that was aiming for around 4% engagement, and explained that for that kind of program, 1 to 2% is considered normal, not a failure. Sit with that. We stand up entire programs, pay per member per month, and quietly accept reaching one or two people in a hundred. As he put it, a solution employees don&rsquo;t use is just money thrown out the window.</p>
+
+    <p>And the skepticism about whether any of it works is earned. The head of benefits at a large employer told me about their diabetes program, Livongo. On paper, they were thrilled: strong enrollment, lots of members with their diabetes &ldquo;managed.&rdquo; Then their consultants at Mercer ran a proper matched-cohort study, and the effect basically disappeared. They had been paying a premium, he said, for not much more than free test strips and remote monitoring. They switched to their pharmacy benefit manager&rsquo;s program instead. They weren&rsquo;t happy with that one either. This is the quiet truth underneath the dashboards: the members who engage were often going to be fine anyway, and the 2% who actually drive the cost are nowhere in the cohort.</p>
+
+    <p>So who are these people, and why can&rsquo;t anyone reach them? After dozens of interviews across payers, providers, benefits leaders, consultants, and the clinicians who literally knock on doors, three things became impossible to ignore.</p>
+
+    <p>The first is trust. Nearly every clinician named it before anything else. People who have been dismissed, rushed, made to feel less-than, or hit with a surprise bill they were promised would never come simply stop engaging. And it falls hardest on the people who already have the least power in the exam room.</p>
+
+    <p>The second is that health is rarely the top priority. Food, housing, childcare, a family crisis. These outrank a blood-sugar number every single time. The programs that actually work do not lead with the clinical metric. They start where the patient&rsquo;s life actually is, and earn the right to talk about health later.</p>
+
+    <p>The third is timing and touch. What moves the hardest-to-reach is not another app. It is a human being, reaching out sequentially and stubbornly: calls at different hours and in different languages, a weekend door knock, a postcard mailed home that happens to catch the spouse, a follow-up in the 24 to 72 hours after someone walks out of an emergency room. A pediatric ER physician told me that somewhere between half and two-thirds of the patients he sees could have been handled in a clinic, if only the patient could have reached one in time. The ER becomes the default because primary care has no same-day slot. That post-discharge window is the single best moment to re-engage someone, and almost nobody is using it, even though the data to trigger on it already exists.</p>
+
+    <p>The system even works against continuity on purpose. One physician described value-based clinics so fixated on growth metrics that diabetic patients were going twelve months or more between visits, while the program still ticked the box for a 90-day prescription. The measure was met. The patient was never seen.</p>
+
+    <h2>What the benefit leaders actually told me</h2>
+    <p class="sub">A double click for the people who buy healthcare for a living.</p>
+
+    <p>I spent a lot of this quarter with the people who purchase healthcare for large employers, at companies like Akamai, Citi, Blain Supply, Stanford Health Care, and AT&amp;T, and with the consultants and brokers at firms like Mercer, Aon, and Alliant who sit between them and the market. I want to relay what they told me plainly, partly because several of them asked me to, and partly because it is the most honest account I found of why this problem stays unsolved.</p>
+
+    <div class="callout">
+      <p class="tag">What I heard, across the board</p>
+      <p>They are not short on solutions. They are exhausted by them. &ldquo;Vendor fatigue&rdquo; came up in almost every conversation: a cancer program here, a diabetes app there, a musculoskeletal point solution, a mental-health platform, each with its own login, its own dashboard, its own ROI deck. And almost none of them believe the ROI decks. One benefits director put it about as bluntly as you can: point-solution ROIs are &ldquo;kind of bull.&rdquo; Vendors claim millions in savings; the enhanced admin fees quietly eat the gains.</p>
+      <p>They are also boxed in. They cannot force anyone to engage. They cannot be seen as &ldquo;big brother&rdquo; reaching into an employee&rsquo;s private health. They buy through consultant gatekeepers who host weekly vendor lunches and decide what reaches the client at all. And the data itself is gated: the third-party administrator sits on the claims and has every reason not to share it, because the engagement of high-risk members is often already bundled into what the carrier or TPA sells, done badly, and impossible to displace without unwinding the bundle. One founder described an employer paying his health plan, as part of the deal, to engage exactly these high-risk members. Did they do it well? Flatly, no.</p>
+    </div>
+
+    <p>The clearest validation came almost by accident. The VP of benefits at one of the largest employers in the country had, on paper, every care-navigation platform money can buy. And his framing of the gap was almost exactly the hypothesis we had been circling: the platforms all claim to do something clever with your data, but the highest-risk members, the ones actually driving the spend, never engage with any of them. The opportunity, he said, was in proactively reaching those people and getting them into basic care. When the person who has already bought everything tells you the one thing he still can&rsquo;t buy, you listen.</p>
+
+    <p>The uncomfortable conclusion is that the big, well-funded players are not failing to reach these patients. They are not really trying. They engage the people who were already going to engage, the motivated and the reachable, and they call it a win. And the few navigation platforms that do this well, the Accolades and Quantum Healths of the world, mostly serve only the largest employers, leaving a long tail of smaller self-insured companies who cannot buy it at any price. The 2% who drive the spend are exactly the people who never pick up the phone. They are a last mile that no one in the system owns.</p>
+
+    <h2>What an honest fix looks like</h2>
+    <p class="sub">A prototype we have been building, called BackToCare.</p>
+
+    <p>If the problem is an unowned last mile, the answer is not another condition-specific app. It is a thin activation layer that sits between identifying a member and the care that already exists. The shape of it is simple, and it is built around the three truths above, including the hardest one an investor named for me: the single most difficult thing to manufacture in healthcare is ongoing behavior change. So the model is designed to demand none of it from an exhausted member.</p>
+
+    <div class="proto">
+      <div class="proto-head">
+        <div class="name">BackToCare <span>&middot; the member&rsquo;s journey</span></div>
+        <div class="price">Paid per result<br>~$185 / completed visit &middot; $0 otherwise</div>
+      </div>
+      <ol class="steps">
+        <li><span><b>A real trigger.</b> You just left the ER on a Tuesday afternoon. A real-time discharge alert fires, no app to download, no form to fill.</span></li>
+        <li><span><b>A human call.</b> Wednesday morning, Maria calls you in your own language. She is coordinated by your health plan, not branded by your employer. She just wants to help you get a follow-up.</span></li>
+        <li><span><b>The friction removed.</b> She books a primary-care visit near you this week and arranges a ride. No copay, no paperwork, an incentive you actually choose.</span></li>
+        <li><span><b>The follow-through.</b> She texts you the morning of, and checks in after. The loop closes on a completed visit, not a sent reminder.</span></li>
+      </ol>
+      <div class="proto-foot">A two-sided prototype, member-facing and buyer-facing, lives <a href="https://prototype-mqqnvcqyb-blanks-8393s-projects.vercel.app/" target="_blank" rel="noopener">here</a>.</div>
+    </div>
+
+    <blockquote>Per-outcome pricing is the answer to an industry that no longer believes its own ROI decks. Roughly $185 for a completed visit, and $0 when nothing happens.</blockquote>
+
+    <p>That last piece is the one I am most convinced of. In a market drowning in per-member fees and inflated savings claims, the most radical thing you can do is charge only for outcomes. Buyers are sick of paying per member per month for everyone when only a sliver ever engages, and they say so: why am I paying for everybody? Pay-per-outcome answers that directly. Something like $185 for a completed primary-care visit within seven days of an ER discharge, shared savings on the readmissions you actually prevent, and nothing at all when there is no result. It makes the vendor&rsquo;s promise self-proving. It aligns everyone around the same thing. And it is, almost word for word, what the exhausted and skeptical benefit leaders I met have been quietly asking for.</p>
+
+    <p>None of this is finished, and I want to be honest about the walls. The data feeds have to be unlocked, which means getting past the TPA that has every incentive to keep them shut. The privacy architecture has to be airtight, so the employer never touches protected health information. The consultants have to be won, because they are the front door. The unit economics of human outreach, including community health workers and stubborn no-show rates, have to be engineered down. And you cannot simply route around the carriers, because, as one founder told me, you can&rsquo;t rent a network; the work has to happen inside the member&rsquo;s existing plan, steering toward the efficient, high-quality destinations that are already there. But for the first time in this project, the problem and the wedge feel like they actually fit each other.</p>
+
+    <p>Julien and I are picking it back up this summer on a Stanford fellowship, rerunning the whole research process from scratch, with a working prototype already in hand and a sharper set of questions to prove or disprove. The sickest patients are not unreachable. They are just unprofitable to reach under the current rules. Change the rules, and the last mile stops being a dead end.</p>
+
+    <footer>
+      Written as the published piece of learning for my RDI research at Stanford GSB, alongside Tatiana Bouri and Julien Bendelac. If you work in benefits, payer strategy, or care delivery and any of this resonates, I would love to compare notes.
+    </footer>
+  </article>
+</div>
+</body>
+</html>
